@@ -16,6 +16,10 @@ public class DriverInit {
     public static WebDriver driver;
     public static WebDriverWait wait;
 
+    public WebDriver getDriver(DesiredCapabilities capabilities) {
+        return driver;
+    }
+
     public WebDriver getDriver() {
         return driver;
     }
@@ -34,6 +38,8 @@ public class DriverInit {
                 System.setProperty("webdriver.chrome.driver",
                     TestngContext.getContext().getCurrentXmlTest().getParameter("driverpath"));
                 driver = new ChromeDriver();
+                DesiredCapabilities chromeCapabilities = DesiredCapabilities.chrome();
+                chromeCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
                 break;
 
             case "IE":
