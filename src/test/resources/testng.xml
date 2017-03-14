@@ -12,7 +12,7 @@
    <test name = "SmokeTest" preserve-order="true">
        
   		<classes>
-  	 	     <class name="com.selenium.practicalguide.Chapter2"></class>
+  	 	     <class name="com.selenium.practicalguide.Chapter3"></class>
   	    </classes>
     </test>
 </suite>
