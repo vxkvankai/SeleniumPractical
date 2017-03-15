@@ -40,10 +40,8 @@ public class Chapter1 extends BaseUtils {
     @Test(priority = 20)
     public void GoogleSearchButtonByName() {
         getDriver().get("http://www.google.com");
-        WebElement searchBox = getDriver().findElement(By.id("btnK"));
+        WebElement searchBox = getDriver().findElement(By.name("btnK"));
         searchBox.submit();
-        //sleep(5000);
-        driver.quit(); // ***** NEED HELP. AfterClass 'terminateApp()' commented below did not work. So i used driver.quit(); instead.
     }
 
     @Test(priority = 30)
@@ -53,7 +51,7 @@ public class Chapter1 extends BaseUtils {
         WebElement searchBox = getDriver().findElement(By.id("gbqfbb"));
         Assert.assertTrue(true, "Google Search");
         searchBox.click();
-        driver.quit();
+
 
     }
 
@@ -62,13 +60,14 @@ public class Chapter1 extends BaseUtils {
         getDriver().get("http://www.google.com");
         List<WebElement> buttons = driver.findElements(By.tagName("button"));
         System.out.println(buttons.size());
-        driver.quit();
+
     }
 
     @Test(priority = 50) // ***** NEED HELP . firebug returns class name gsfi lst-d-f. check with herb. 
     public void GoogleSearchByClassName() {
 
         getDriver().get("http://www.google.com");
+        sleep(4000);
         WebElement searchBox = getDriver().findElement(By.className("gsfi"));  //input[@class='gsfi lst-d-f'] 
         searchBox.sendKeys("Omaha Nebraska");
         sleep(5000);
