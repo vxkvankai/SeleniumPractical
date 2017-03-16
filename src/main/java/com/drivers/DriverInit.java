@@ -37,9 +37,10 @@ public class DriverInit {
             case "Chrome":
                 System.setProperty("webdriver.chrome.driver",
                     TestngContext.getContext().getCurrentXmlTest().getParameter("driverpath"));
+                //                Map capabilitiesMap = new HashMap();
+                //                capabilitiesMap.put("takesScreenshot", true);
+                //                DesiredCapabilities capabilities = new DesiredCapabilities(capabilitiesMap);
                 driver = new ChromeDriver();
-                DesiredCapabilities chromeCapabilities = DesiredCapabilities.chrome();
-                chromeCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
                 break;
 
             case "IE":
