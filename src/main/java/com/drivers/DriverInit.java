@@ -16,6 +16,10 @@ public class DriverInit {
     public static WebDriver driver;
     public static WebDriverWait wait;
 
+    public WebDriver getDriver(DesiredCapabilities capabilities) {
+        return driver;
+    }
+
     public WebDriver getDriver() {
         return driver;
     }
@@ -33,6 +37,9 @@ public class DriverInit {
             case "Chrome":
                 System.setProperty("webdriver.chrome.driver",
                     TestngContext.getContext().getCurrentXmlTest().getParameter("driverpath"));
+                //                Map capabilitiesMap = new HashMap();
+                //                capabilitiesMap.put("takesScreenshot", true);
+                //                DesiredCapabilities capabilities = new DesiredCapabilities(capabilitiesMap);
                 driver = new ChromeDriver();
                 break;
 
