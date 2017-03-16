@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.utils.BaseUtils;
 import com.utils.TestngContext;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -77,7 +78,7 @@ public class Chapter2 extends BaseUtils {
 
     }
 
-    @Test(priority = 10)
+    @Test(priority = 50)
     public void ActionBuildPerform() {
 
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//Selectable.html");
@@ -97,7 +98,7 @@ public class Chapter2 extends BaseUtils {
 
     // Key points:All user actions are divided in to 2. Mouse based and keyboard based actions.There are around 8 mouse based actions in Actions class
 
-    @Test(priority = 20)
+    @Test(priority = 60)
     public void MoveByOffset() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//selectable.html");
         WebElement three = getDriver().findElement(By.name("three"));
@@ -109,7 +110,7 @@ public class Chapter2 extends BaseUtils {
         builder.perform();
     }
 
-    @Test(priority = 30)
+    @Test(priority = 70)
     public void MoveByOffsetAndClic() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//selectable.html");
         WebElement seven = getDriver().findElement(By.name("seven"));
@@ -124,14 +125,14 @@ public class Chapter2 extends BaseUtils {
 
     }
 
-    @Test(priority = 40)
+    @Test(priority = 80)
     public void MoveByOffsetAndClilck() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//Selectable.html");
 
         // Decalring and initializing tile web elements one, eleven and five
         WebElement one = getDriver().findElement(By.name("one"));
-        WebElement eleven = getDriver().findElement(By.name("eleven"));
-        WebElement five = getDriver().findElement(By.name("five"));
+        //            WebElement eleven = getDriver().findElement(By.name("eleven"));
+        //            WebElement five = getDriver().findElement(By.name("five"));
 
         // Decalring and initializing style element for tile one
         int border = 1;
@@ -155,7 +156,7 @@ public class Chapter2 extends BaseUtils {
     }
 
 
-    @Test(priority = 50)
+    @Test(priority = 90)
     public void ClickOnWebElement() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//Selectable.html");
         WebElement one = getDriver().findElement(By.name("one"));
@@ -184,7 +185,7 @@ public class Chapter2 extends BaseUtils {
 
     }
 
-    @Test(priority = 60)
+    @Test(priority = 100)
     public void ClickAndHold() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//Sortable.html");
         WebElement three = getDriver().findElement(By.name("three"));
@@ -198,7 +199,7 @@ public class Chapter2 extends BaseUtils {
         sleep(3000);
     }
 
-    @Test(priority = 70)
+    @Test(priority = 110)
     public void ClickAndRelease() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//Sortable.html");
         WebElement three = getDriver().findElement(By.name("three"));
@@ -209,7 +210,7 @@ public class Chapter2 extends BaseUtils {
 
     }
 
-    @Test(priority = 80) // page 55. dragAndDropBy method using an offset
+    @Test(priority = 120) // page 55. dragAndDropBy method using an offset
     public void DragMe() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//DragMe.html");
         WebElement dragMe = getDriver().findElement(By.id("draggable"));
@@ -219,7 +220,7 @@ public class Chapter2 extends BaseUtils {
 
     }
 
-    @Test(priority = 90)
+    @Test(priority = 130)
     public void DraMeWithSrcAndTarget() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//DragAndDrop.html");
         WebElement src = getDriver().findElement(By.id("draggable"));
@@ -228,41 +229,44 @@ public class Chapter2 extends BaseUtils {
         builder.dragAndDrop(src, target).perform();
     }
 
-    @Test(priority = 100)
+    @Test(priority = 140)
     public void DoubleClick() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//DoubleClick.html");
         WebElement dblClick = getDriver().findElement(By.name("dblClick"));
         Actions builder = new Actions(getDriver());
         builder.moveToElement(dblClick).doubleClick().perform();
-        sleep(5000);
+
+        handleAlert();
+
     }
 
-    @Test(priority = 110)
+    @Test(priority = 150)
     public void DoubleClickVersion2() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//DoubleClick.html");
         WebElement dblClick = getDriver().findElement(By.name("dblClick"));
         Actions builder = new Actions(getDriver());
         builder.doubleClick(dblClick).perform();
-        //Assert.assertEquals(true, "Double Clicked !!."); HELP ****: why is assert is deprecated? any alternative for assert?
+
+        handleAlert();
     }
 
 
-    @Test(priority = 120)
+    @Test(priority = 160)
     public void ContectClick() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//ContextClick.html");
         WebElement contextMenu = getDriver().findElement(By.id("div-context"));
         Actions builder = new Actions(getDriver());
         builder.contextClick(contextMenu).click(getDriver().findElement(By.name("Item 4"))).perform();
-
+        handleAlert();
     }
 
-    @Test(priority = 130)
+    @Test(priority = 170)
     public void ContextClick() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//ContextClick.html");
         WebElement contextMenu = getDriver().findElement(By.id("div-context"));
         Actions builder = new Actions(getDriver());
         builder.moveToElement(contextMenu).contextClick().click(getDriver().findElement(By.name("Item 4"))).perform();
-
+        handleAlert();
     }
 
     // learning note: keysUp and keysDown works with Shift, Ctrl, and Alt keys and returns An IllegalArgumentException is thrown when the passed key is not one of the
@@ -270,7 +274,7 @@ public class Chapter2 extends BaseUtils {
 
     // keysUp exercise:
 
-    @Test(priority = 140)
+    @Test(priority = 180)
     public void KeysDown() {
         getDriver().get("file:////Users//vbook//Desktop//8850OS_Code//Chapter%202//HTML//ContextClick.html");
         WebElement contextMenu = getDriver().findElement(By.id("div-context"));
@@ -278,6 +282,12 @@ public class Chapter2 extends BaseUtils {
         builder.moveToElement(contextMenu).contextClick().click(getDriver().findElement(By.name("Item 4"))).perform();
         builder.keyDown(Keys.CONTROL).click();
         builder.keyUp(Keys.CONTROL);
+        handleAlert();
+    }
+
+    private void handleAlert() {
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
     }
 
     @AfterClass(alwaysRun = true)
